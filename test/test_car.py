@@ -1,4 +1,6 @@
+#run tests, it checks a ceratin component of the code and checks that it works as intended
 import unittest
+#to work with calender times and that shit 
 from datetime import datetime
 
 from engine.model.calliope import Calliope
@@ -10,7 +12,9 @@ from engine.model.thovex import Thovex
 
 class TestCalliope(unittest.TestCase):
     def test_battery_should_be_serviced(self):
+        #get todays date 
         today = datetime.today().date()
+        #change the last service day
         last_service_date = today.replace(year=today.year - 3)
         current_mileage = 0
         last_service_mileage = 0
