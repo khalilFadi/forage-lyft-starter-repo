@@ -8,7 +8,7 @@ class TestCallope(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 3)
+        last_service_date = today.replace(year=today.year - 4)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -29,7 +29,7 @@ class TestCallope(unittest.TestCase):
     def test_engine_should_be_serviced(self):
         today = datetime.today().date()
         last_service_date = datetime.today().date()
-        current_mileage = 30001
+        current_mileage = 40001
         last_service_mileage = 0
 
         car = carFactory.create_calloiope()
@@ -38,7 +38,7 @@ class TestCallope(unittest.TestCase):
     def test_engine_should_not_be_serviced(self):
         today = datetime.today().date()
         last_service_date = datetime.today().date()
-        current_mileage = 3000
+        current_mileage = 4000
         last_service_mileage = 0
 
         car = carFactory.create_calloiope()
@@ -49,7 +49,7 @@ class TestGlissade(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 3)
+        last_service_date = today.replace(year=today.year - 4)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -90,7 +90,7 @@ class TestPalindrome(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 3)
+        last_service_date = today.replace(year=today.year - 4)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -131,7 +131,7 @@ class TestRorschach(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 5)
+        last_service_date = today.replace(year=today.year - 6)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -142,7 +142,7 @@ class TestRorschach(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 3)
+        last_service_date = today.replace(year=today.year - 4)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -172,7 +172,7 @@ class TestThovex(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 5)
+        last_service_date = today.replace(year=today.year - 6)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -183,7 +183,7 @@ class TestThovex(unittest.TestCase):
         #get todays date 
         today = datetime.today().date()
         #change the last service day
-        last_service_date = today.replace(year=today.year - 3)
+        last_service_date = today.replace(year=today.year - 4)
         current_mileage = 0
         last_service_mileage = 0
 
@@ -193,7 +193,7 @@ class TestThovex(unittest.TestCase):
     def test_engine_should_be_serviced(self):
         today = datetime.today().date()
         last_service_date = datetime.today().date()
-        current_mileage = 30001
+        current_mileage = 40001
         last_service_mileage = 0
 
         car = carFactory.create_thovex()
