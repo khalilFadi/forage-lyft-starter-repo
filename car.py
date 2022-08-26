@@ -1,33 +1,55 @@
-from abc import ABC, abstractmethod
-from sys import _enablelegacywindowsfsencoding
 
 
-class Car(ABC):
-    #the only info we have about the car is the last_service_date
-    #we need to add engines and batteries info
+from configparser import MAX_INTERPOLATION_DEPTH
+from locale import currency
+from datetime import date, datetime
+
+
+
+class Car():
+    #you will create car versions with each engine and battery 
+    #car will have 2 variables Engine and battery
+    #when needs_service() is called, functions from both engine and battery will be called
     def __init__(self, Engine_type, Battery_type):
-        self._engine = Engine(Engine_type)
-        self._battery = Battery(Battery_type)
-        
-    @abstractmethod
-    def needs_service(self):
-        if(self._engine.needs_service() and self._battery.needs_service()):
+        self._Engine = Engine(Engine_type)
+        self._Battery = Battery(Battery_type)
+    
+    def needs_service(self, Current_date, Last_service_date, Current_mileage, last_service_mileage):
+        if self._Engine.needs_service(Last_service_date , last_service_mileage, Current_mileage) or self._Battery.needs_service(Last_service_date, Current_date):
             return True
         else:
             return False
 
 class Engine():
-    def __init__(self, last_service_mileage: int, current_mileage: int):
-        self.last_service_mileage = last_service_mileage
-        self.current_mileage = current_mileage
+    def __init__(self, max_mileage :int):
+        self.max_mileage = max_mileage
+        pass
 
-    def needs_service(self, max_mileage):
-        return self.current_mileage - self.last_service_mileage > max_mileage
+    def needs_service(self,last_service_date,  last_service_mileage, current_mileage):
+        if type(current_mileage) == int:
+            return self.based_on_mileage(last_service_date,  last_service_mileage, current_mileage)
+        else:
+            return self.based_on_warning_light(last_service_date,  last_service_mileage, current_mileage)
+
+    def based_on_mileage(self, last_service_date,last_service_mileage, current_mileage):    
+        return (current_mileage - last_service_mileage) > (self.max_mileage.max_mileage)
+
+    def based_on_warning_light(self, last_service_date,last_service_mileage, warning_light_on):
+        return warning_light_on
+    #you will create engines with the max requriements 
+    #when needs service will be called check the needed numbers 
+
 
     
 class Battery():
-    def __init__(self, Battery_type, last_service_date):
-        self.battery_type = Battery_type
-        self.last_service_date = last_service_date
-    def needs_service(self):
-        pass
+    #when needs_service is called it will cehck the needed dates.
+    def __init__(self, max_years):
+        self.max_years = max_years
+    
+    def needs_service(self, last_service_date, current_date):
+        service_threshold_date = last_service_date.replace(year = last_service_date.year + self.max_years.max_years)
+        if service_threshold_date < current_date:
+            return True
+        else:
+            return False
+

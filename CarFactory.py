@@ -1,30 +1,27 @@
+from datetime import date, datetime
 from re import S
-from car import Car
-from Battery.NubbinBattery import NubbinBattery
-from Battery.SpindlerBattery import SpindlerBattery
+from car import Car, Battery, Engine
 
-from engine.capulet_engine import CapuletEngine
-from engine.sternman_engine import SternmanEngine
-from engine.willoughby_engine import WilloughbyEngine
+NubbinBattery = Battery(max_years = 4)
+SpindlerBattery = Battery(max_years = 2)
 
-class Engine_Creation():
-    def __init__(self) -> None:
-        pass
 
-class CarFactory(Car):
-    def create_calliope():
-        return Car(CapuletEngine, SpindlerBattery)
+CapuletEngine = Engine(30000)
+SternmanEngine = Engine(0) #works on light warning 
+WilloughbyEngine = Engine(60000)
 
-    def create_glissade():
-        return Car(WilloughbyEngine, SpindlerBattery)
-    
-    def create_palindrome():
-        return Car(SternmanEngine, SpindlerBattery)
+def create_calloiope():
+    return Car(CapuletEngine, SpindlerBattery)
 
-    def create_rorschach():
-        return Car(WilloughbyEngine, NubbinBattery)
+def create_glissade():
+    return Car(WilloughbyEngine, SpindlerBattery)
 
-    def create_thovex():
-        return Car(CapuletEngine, NubbinBattery)
+def create_palindrome():
+    return Car(SternmanEngine, SpindlerBattery)
 
-    
+def create_rorschach():
+    return Car(WilloughbyEngine, NubbinBattery)
+
+def create_thovex():
+    return Car(CapuletEngine, NubbinBattery)
+
